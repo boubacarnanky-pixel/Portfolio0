@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de Boubacar Nanky — Développeur Web, Administration Réseaux, Licence 2">
+  <title>Boubacar Nanky — Portfolio</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ========================================================
+     NAVIGATION FIXE
+     ======================================================== -->
+  <!-- Checkbox cachée pour le menu burger (CSS uniquement) -->
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+  <header class="navbar">
+    <div class="container navbar__inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="logo-link">
+        <span class="logo-circle">NB</span>
+        <span class="logo-text">Nanky_B</span>
+      </a>
+
+      <!-- Burger (label lié au checkbox en dehors du header) -->
+      <label for="menu-toggle" class="burger-label" aria-label="Ouvrir le menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Menu de navigation -->
+      <nav class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Accueil</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="competence.html">Compétences</a></li>
+          <li><a href="experience.html">Expérience</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Toggle Dark / Light -->
+      <div class="toggle-wrap">
+        <input type="checkbox" id="theme-toggle" class="theme-toggle">
+        <label for="theme-toggle" class="toggle-label" aria-label="Basculer le thème">
+          <span class="toggle-icon toggle-icon--sun">☀</span>
+          <span class="toggle-icon toggle-icon--moon">☽</span>
+          <span class="toggle-thumb"></span>
+        </label>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================
+     SECTION HERO
+     ======================================================== -->
+  <main>
+    <section class="hero" id="accueil">
+      <div class="container hero__inner">
+
+        <!-- Texte -->
+        <div class="hero__text">
+
+          <p class="hero__hello">Bonjour, je suis disponible</p>
+
+          <h1 class="hero__title">
+            Je suis
+            <span class="hero__name">Boubacar Nanky</span>
+          </h1>
+
+          <p class="hero__subtitle">
+            Développeur Web<span class="cursor">|</span>
+          </p>
+
+          <p class="hero__desc">
+            Je crée des expériences numériques élégantes et performantes.
+            Passionné par le code propre et les interfaces qui donnent envie de rester.
+            Actuellement en <strong>Licence 2</strong> de <strong>Génie Logiciel et Administration Réseaux</strong>.
+          </p>
+
+          <!-- Réseaux sociaux -->
+          <div class="hero__meta">
+            <div>
+              <p class="hero__meta-label">Me trouver</p>
+              <div class="hero__socials">
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+                  <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://github.com/boubacarnanky-pixel" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Badges compétences -->
+            <div>
+              <p class="hero__meta-label">Meilleures compétences</p>
+              <div class="hero__badges">
+                <span class="skill-badge" title="HTML5"><i class="fa-brands fa-html5"></i></span>
+                <span class="skill-badge" title="CSS3"><i class="fa-brands fa-css3-alt"></i></span>
+                <span class="skill-badge" title="JavaScript"><i class="fa-brands fa-js"></i></span>
+                <span class="skill-badge" title="PHP"><i class="fa-brands fa-php"></i></span>
+                <span class="skill-badge" title="Sécurité"><i class="fa fa-shield-halved"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Boutons CTA -->
+          <div class="hero__cta">
+            <a href="images/CV.pdf" class="btn" download>
+              <i class="fa fa-download"></i> Télécharger mon CV
+            </a>
+            <a href="contact.html" class="btn btn--outline">Me contacter</a>
+          </div>
+
+        </div>
+
+        <!-- Photo de profil -->
+        <div class="hero__image-wrap">
+          <div class="hero__image-frame">
+            <img src="images/profil.jpeg" alt="Photo de profil de Boubacar Nanky">
+          </div>
+          <!-- Badge flottant décoratif -->
+          <div class="hero__badge-float">
+            <span class="badge-icon">🎓</span>
+            <div class="badge-text">
+              <strong>Licence 2</strong>
+              <span>Génie Logiciel</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================
+     FOOTER
+     ======================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+
+        <!-- Marque -->
+        <div class="footer__brand">
+          <a href="index.html" class="logo-link">
+            <span class="logo-circle">NB</span>
+            <span class="logo-text">Nanky_B</span>
+          </a>
+          <p class="footer__brand-desc">
+            Développeur Web passionné. Je transforme vos idées en expériences numériques mémorables.
+          </p>
+          <a href="images/CV.pdf" class="btn btn--sm btn--outline-white" download>↓ Télécharger mon CV</a>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer__links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="competence.html">Compétences</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Projets -->
+        <div class="footer__links">
+          <h4>Projets récents</h4>
+          <ul>
+            <li><a href="Projets/Site Vitrine Restaurant.html">Site Vitrine Restaurant</a></li>
+            <li><a href="Projets/Gestionnaire de Tâches.html">Gestionnaire de Tâches</a></li>
+            <li><a href="Projets/Blog Personnel.html">Blog Personnel</a></li>
+            <li><a href="Projets/Landing-de-page-animé/Baterrie.html">Landing Page Animée</a></li>
+          </ul>
+        </div>
+
+        <!-- Réseaux -->
+        <div class="footer__social">
+          <h4>Me trouver</h4>
+          <div class="footer__social-icons">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://github.com/boubacarnanky-pixel" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <p>© 2025 Boubacar Nanky — Développé avec ❤️ en HTML &amp; CSS</p>
+        <p>Cours PHP &amp; MySQL — Professeur : M. Diouf</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <a href="#accueil" class="scroll-top" aria-label="Retour en haut">↑</a>
+
+</body>
+</html>

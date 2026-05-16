@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de projets de Boubacar Nanky — HTML, CSS, PHP, MySQL">
+  <title>Portfolio — Boubacar Nanky</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a href="index.html" class="logo-link">
+        <span class="logo-circle">NB</span>
+        <span class="logo-text">Nanky_B</span>
+      </a>
+      <label for="menu-toggle" class="burger-label" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </label>
+      <nav class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="portfolio.html" class="active">Portfolio</a></li>
+          <li><a href="competence.html">Compétences</a></li>
+          <li><a href="experience.html">Expérience</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="toggle-wrap">
+        <input type="checkbox" id="theme-toggle" class="theme-toggle">
+        <label for="theme-toggle" class="toggle-label" aria-label="Basculer le thème">
+          <span class="toggle-icon toggle-icon--sun">☀</span>
+          <span class="toggle-icon toggle-icon--moon">☽</span>
+          <span class="toggle-thumb"></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <nav class="page-hero__breadcrumb" aria-label="Fil d'Ariane">
+          <a href="index.html">Accueil</a>
+          <span>›</span>
+          <span>Portfolio</span>
+        </nav>
+        <div class="section-tag">Réalisations</div>
+        <h1 class="page-hero__title">Mes Projets</h1>
+        <p class="page-hero__desc">Une sélection de projets réalisés durant ma formation en Génie Logiciel.</p>
+      </div>
+    </section>
+
+    <section class="portfolio">
+      <div class="container">
+
+        <div class="portfolio__grid">
+
+          <!-- Projet 1 -->
+          <div class="project-card">
+            <div class="project-card__img project-card__img--1" data-num="01">
+              <div class="project-card__overlay">
+                <a href="Projets/Site Vitrine Restaurant.html" class="btn btn--sm btn--outline-white">Voir le projet</a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Site Vitrine RO-BOOK</h3>
+              <p class="project-card__desc">Site responsive pour un restaurant local. Design chaleureux, menu interactif et présentation des plats.</p>
+              <div class="project-card__tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">Responsive</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projet 2 -->
+          <div class="project-card">
+            <div class="project-card__img project-card__img--2" data-num="02">
+              <div class="project-card__overlay">
+                <a href="Projets/Gestionnaire de Tâches.html" class="btn btn--sm btn--outline-white">Voir le projet</a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Gestionnaire de Tâches</h3>
+              <p class="project-card__desc">Application CRUD complète avec authentification PHP/MySQL et gestion des priorités.</p>
+              <div class="project-card__tags">
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">CRUD</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projet 3 -->
+          <div class="project-card">
+            <div class="project-card__img project-card__img--3" data-num="03">
+              <div class="project-card__overlay">
+                <a href="Projets/Landing-de-page-animé/Baterrie.html" target="_blank" class="btn btn--sm btn--outline-white">Voir le projet</a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Landing Page Animée</h3>
+              <p class="project-card__desc">Page d'accueil avec animations CSS avancées et interactions fluides.</p>
+              <div class="project-card__tags">
+                <span class="tag">CSS</span>
+                <span class="tag">Animation</span>
+                <span class="tag">UI/UX</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projet 4 -->
+          <div class="project-card">
+            <div class="project-card__img project-card__img--4" data-num="04">
+              <div class="project-card__overlay">
+                <a href="Projets/Mes-projets-classes.html" class="btn btn--sm btn--outline-white">Voir le projet</a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Projets Classe</h3>
+              <p class="project-card__desc">Interface d'administration claire et intuitive avec tableaux de bord en CSS Grid.</p>
+              <div class="project-card__tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">Grid</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projet 5 -->
+          <div class="project-card">
+            <div class="project-card__img project-card__img--5" data-num="05">
+              <div class="project-card__overlay">
+                <a href="Projets/Blog Personnel.html" class="btn btn--sm btn--outline-white">Voir le projet</a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Blog Personnel</h3>
+              <p class="project-card__desc">Moteur de blog développé from scratch avec PHP et base de données MySQL.</p>
+              <div class="project-card__tags">
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">Blog</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projet 6 -->
+          <div class="project-card">
+            <div class="project-card__img project-card__img--6" data-num="06">
+              <div class="project-card__overlay">
+                <a href="Projets/les bases de html5/index.html" target="_blank" class="btn btn--sm btn--outline-white">Voir le projet</a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Portfolio Robbie Lens</h3>
+              <p class="project-card__desc">Portfolio réalisé dans le cadre du cours OpenClassrooms <em>Les bases de HTML5 et CSS3</em>.</p>
+              <div class="project-card__tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">Portfolio</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="index.html" class="logo-link">
+            <span class="logo-circle">NB</span>
+            <span class="logo-text">Nanky_B</span>
+          </a>
+          <p class="footer__brand-desc">Développeur Web passionné. Je transforme vos idées en expériences numériques mémorables.</p>
+          <a href="images/CV.pdf" class="btn btn--sm btn--outline-white" download>↓ Télécharger mon CV</a>
+        </div>
+        <div class="footer__links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="competence.html">Compétences</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__links">
+          <h4>Projets récents</h4>
+          <ul>
+            <li><a href="Projets/Site Vitrine Restaurant.html">Site Vitrine Restaurant</a></li>
+            <li><a href="Projets/Gestionnaire de Tâches.html">Gestionnaire de Tâches</a></li>
+            <li><a href="Projets/Blog Personnel.html">Blog Personnel</a></li>
+            <li><a href="Projets/Landing-de-page-animé/Baterrie.html">Landing Page Animée</a></li>
+          </ul>
+        </div>
+        <div class="footer__social">
+          <h4>Me trouver</h4>
+          <div class="footer__social-icons">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://github.com/boubacarnanky-pixel" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>© 2025 Boubacar Nanky — Développé avec ❤️ en HTML &amp; CSS</p>
+        <p>Cours PHP &amp; MySQL — Professeur : M. Diouf</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="scroll-top" aria-label="Retour en haut">↑</a>
+
+</body>
+</html>
