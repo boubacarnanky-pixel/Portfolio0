@@ -1,3 +1,10 @@
+<?php
+/* ============================================================
+   experience.php — Page Expérience
+   Portfolio Boubacar Nanky — Partie 2 PHP
+   ============================================================ */
+$page_active = 'experience';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,46 +18,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<body>
+<body id="top">
 
-  <input type="checkbox" id="menu-toggle" class="menu-toggle">
-
-  <header class="navbar">
-    <div class="container navbar__inner">
-      <a href="index.html" class="logo-link">
-        <span class="logo-circle">NB</span>
-        <span class="logo-text">Nanky_B</span>
-      </a>
-      <label for="menu-toggle" class="burger-label" aria-label="Ouvrir le menu">
-        <span></span><span></span><span></span>
-      </label>
-      <nav class="nav-menu">
-        <ul class="nav-links">
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="service.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="competence.html">Compétences</a></li>
-          <li><a href="experience.html" class="active">Expérience</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="toggle-wrap">
-        <input type="checkbox" id="theme-toggle" class="theme-toggle">
-        <label for="theme-toggle" class="toggle-label" aria-label="Basculer le thème">
-          <span class="toggle-icon toggle-icon--sun">☀</span>
-          <span class="toggle-icon toggle-icon--moon">☽</span>
-          <span class="toggle-thumb"></span>
-        </label>
-      </div>
-    </div>
-  </header>
+  <?php require 'composants/navigation.php'; ?>
 
   <main>
 
     <section class="page-hero">
       <div class="container page-hero__inner">
         <nav class="page-hero__breadcrumb" aria-label="Fil d'Ariane">
-          <a href="index.html">Accueil</a>
+          <a href="index.php">Accueil</a>
           <span>›</span>
           <span>Expérience</span>
         </nav>
@@ -60,13 +37,10 @@
       </div>
     </section>
 
-    <!-- TIMELINE -->
     <section class="experience-section" id="experience">
       <div class="container">
-
         <div class="timeline">
 
-          <!-- Étape 1 — La plus récente -->
           <div class="timeline__item timeline__item--left">
             <div class="timeline__card">
               <span class="timeline__date">2025 / 2026 — En cours</span>
@@ -80,7 +54,6 @@
             <div class="timeline__dot"></div>
           </div>
 
-          <!-- Étape 2 -->
           <div class="timeline__item timeline__item--right">
             <div class="timeline__card">
               <span class="timeline__date">2024 / 2025</span>
@@ -94,7 +67,6 @@
             <div class="timeline__dot"></div>
           </div>
 
-          <!-- Étape 3 -->
           <div class="timeline__item timeline__item--left">
             <div class="timeline__card">
               <span class="timeline__date">2023 / 2024</span>
@@ -173,57 +145,7 @@
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <div class="footer__brand">
-          <a href="index.html" class="logo-link">
-            <span class="logo-circle">NB</span>
-            <span class="logo-text">Nanky_B</span>
-          </a>
-          <p class="footer__brand-desc">Développeur Web passionné. Je transforme vos idées en expériences numériques mémorables.</p>
-          <a href="images/CV.pdf" class="btn btn--sm btn--outline-white" download>↓ Télécharger mon CV</a>
-        </div>
-        <div class="footer__links">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="competence.html">Compétences</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer__links">
-          <h4>Projets récents</h4>
-          <ul>
-            <li><a href="Projets/Site Vitrine Restaurant.html">Site Vitrine Restaurant</a></li>
-            <li><a href="Projets/Gestionnaire de Tâches.html">Gestionnaire de Tâches</a></li>
-            <li><a href="Projets/Blog Personnel.html">Blog Personnel</a></li>
-            <li><a href="Projets/Landing-de-page-animé/Baterrie.html">Landing Page Animée</a></li>
-          </ul>
-        </div>
-        <div class="footer__social">
-          <h4>Me trouver</h4>
-          <div class="footer__social-icons">
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://github.com/boubacarnanky-pixel" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="container">
-        <p>© 2025 Boubacar Nanky — Développé avec ❤️ en HTML &amp; CSS</p>
-        <p>Cours PHP &amp; MySQL — Professeur : M. Diouf</p>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#" class="scroll-top" aria-label="Retour en haut">↑</a>
+  <?php require 'composants/footer.php'; ?>
 
 </body>
 </html>

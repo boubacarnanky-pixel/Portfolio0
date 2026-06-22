@@ -9,58 +9,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap');
 
 /* ============================================================
-   2. VARIABLES CSS — SOURCE UNIQUE DE VÉRITÉ
+   2. VARIABLES CSS
    ============================================================ */
 :root {
-  /* Palette principale */
-  --clr-primary:      #E63946;
+  --clr-primary:       #E63946;
   --clr-primary-light: rgba(230, 57, 70, 0.10);
-  --clr-primary-mid:  rgba(230, 57, 70, 0.60);
+  --clr-primary-mid:   rgba(230, 57, 70, 0.60);
 
-  /* Fond & surfaces */
-  --clr-bg:           #F8F9FD;
-  --clr-surface:      #FFFFFF;
-  --clr-surface-alt:  #F0F3FB;
-  --clr-dark:         #0D0F1A;
-  --clr-dark-mid:     #1A1D2E;
+  --clr-bg:            #F8F9FD;
+  --clr-surface:       #FFFFFF;
+  --clr-surface-alt:   #F0F3FB;
+  --clr-dark:          #0D0F1A;
+  --clr-dark-mid:      #1A1D2E;
 
-  /* Textes */
-  --clr-text:         #4B506B;
-  --clr-text-dark:    #0D0F1A;
-  --clr-text-muted:   #8B90A8;
+  --clr-text:          #4B506B;
+  --clr-text-dark:     #0D0F1A;
+  --clr-text-muted:    #8B90A8;
 
-  /* Bordures */
-  --clr-border:       #E4E8F5;
+  --clr-border:        #E4E8F5;
 
-  /* Typographie */
-  --font-display:     'Syne', sans-serif;
-  --font-body:        'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
 
-  /* Espacements */
-  --space-xs:   0.5rem;
-  --space-sm:   1rem;
-  --space-md:   2rem;
-  --space-lg:   4rem;
-  --space-xl:   6rem;
-  --space-2xl:  8rem;
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  6rem;
+  --space-2xl: 8rem;
 
-  /* Rayons */
-  --radius-sm:  8px;
-  --radius-md:  16px;
-  --radius-lg:  24px;
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
   --radius-full: 100px;
 
-  /* Ombres */
   --shadow-sm:  0 2px 16px rgba(13, 15, 26, 0.06);
   --shadow-md:  0 8px 40px rgba(13, 15, 26, 0.10);
   --shadow-lg:  0 20px 70px rgba(13, 15, 26, 0.14);
   --shadow-red: 0 8px 30px rgba(230, 57, 70, 0.30);
 
-  /* Transitions */
-  --transition: 0.3s ease;
+  --transition:      0.3s ease;
   --transition-slow: 0.5s ease;
 
-  /* Navbar */
   --navbar-height: 72px;
 }
 
@@ -119,15 +109,12 @@ button {
   padding: 0 1.5rem;
 }
 
-/* En-tête de section */
 .section-header {
   text-align: center;
   margin-bottom: var(--space-lg);
 }
 
-.section-header--left {
-  text-align: left;
-}
+.section-header--left { text-align: left; }
 
 .section-tag {
   display: inline-block;
@@ -150,7 +137,9 @@ button {
   font-weight: 800;
 }
 
-/* Bouton principal */
+/* ============================================================
+   5. BOUTONS
+   ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -235,7 +224,7 @@ button {
 }
 
 /* ============================================================
-   5. NAVBAR
+   6. NAVBAR
    ============================================================ */
 .navbar {
   position: fixed;
@@ -289,13 +278,18 @@ button {
   color: var(--clr-text-dark);
 }
 
-/* Checkbox cachée — burger */
+/* ============================================================
+   MENU BURGER — CSS UNIQUEMENT (checkbox hack corrigé)
+   ============================================================ */
+
+/* Checkbox cachée — hors du flux normal */
 .menu-toggle {
-  position: absolute;
+  position: fixed;
   opacity: 0;
   width: 0;
   height: 0;
   pointer-events: none;
+  /* On la place au niveau du body pour que ~ fonctionne */
 }
 
 /* MENU DESKTOP */
@@ -328,20 +322,21 @@ button {
   background: var(--clr-primary-light);
 }
 
-/* BURGER — mobile uniquement */
+/* BURGER LABEL — affiché uniquement sur mobile */
 .burger-label {
   display: none;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   cursor: pointer;
   padding: 8px;
   border-radius: var(--radius-sm);
   flex-shrink: 0;
   transition: background var(--transition);
-  z-index: 1001;
+  z-index: 1100;
+  position: relative;
 }
 
 .burger-label:hover { background: var(--clr-surface-alt); }
@@ -349,29 +344,15 @@ button {
 .burger-label span {
   display: block;
   width: 100%;
-  height: 2px;
+  height: 2.5px;
   background: var(--clr-text-dark);
   border-radius: 2px;
-  transition: transform var(--transition), opacity var(--transition);
+  transition: transform var(--transition), opacity var(--transition), width var(--transition);
   transform-origin: center;
 }
 
-/* Animation burger → ✕ */
-.menu-toggle:checked ~ .navbar__inner .burger-label span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.menu-toggle:checked ~ .navbar__inner .burger-label span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-.menu-toggle:checked ~ .navbar__inner .burger-label span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
 /* TOGGLE DARK / LIGHT */
-.toggle-wrap {
-  flex-shrink: 0;
-}
+.toggle-wrap { flex-shrink: 0; }
 
 .theme-toggle {
   position: absolute;
@@ -406,10 +387,10 @@ button {
   transition: opacity var(--transition);
 }
 
-.toggle-icon--sun { left: 6px; color: #f5a623; opacity: 1; }
+.toggle-icon--sun  { left: 6px;  color: #f5a623; opacity: 1; }
 .toggle-icon--moon { right: 6px; color: #c8d6f5; opacity: 0; }
 
-.theme-toggle:checked + .toggle-label .toggle-icon--sun { opacity: 0; }
+.theme-toggle:checked + .toggle-label .toggle-icon--sun  { opacity: 0; }
 .theme-toggle:checked + .toggle-label .toggle-icon--moon { opacity: 1; }
 
 .toggle-thumb {
@@ -428,16 +409,12 @@ button {
   background: #c8d6f5;
 }
 
-.theme-toggle:focus-visible + .toggle-label {
-  outline: 2px solid var(--clr-primary);
-  outline-offset: 3px;
-}
-
 /* ============================================================
-   6. RESPONSIVE NAVBAR
+   7. RESPONSIVE NAVBAR — MENU BURGER CORRIGÉ
    ============================================================ */
 @media (max-width: 860px) {
 
+  /* Afficher le burger */
   .burger-label { display: flex; }
 
   /* Menu caché par défaut sur mobile */
@@ -453,14 +430,29 @@ button {
     align-items: stretch;
     max-height: 0;
     overflow: hidden;
-    transition: max-height var(--transition-slow), padding var(--transition-slow);
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.45s ease;
     padding: 0;
+    z-index: 999;
   }
 
-  /* Menu ouvert */
-  .menu-toggle:checked ~ .navbar__inner .nav-menu {
-    max-height: 400px;
-    padding: 0.75rem 0;
+  /* ✅ CORRECTION CLEF : la checkbox est AVANT le header dans le DOM
+     On utilise le sélecteur général ~ pour cibler .navbar puis .nav-menu à l'intérieur */
+  .menu-toggle:checked ~ .navbar .nav-menu {
+    max-height: 420px;
+    padding: 0.5rem 0;
+  }
+
+  /* Animation burger → ✕ quand menu ouvert */
+  .menu-toggle:checked ~ .navbar .burger-label span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+  .menu-toggle:checked ~ .navbar .burger-label span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .menu-toggle:checked ~ .navbar .burger-label span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
   }
 
   .nav-links {
@@ -470,19 +462,33 @@ button {
     width: 100%;
   }
 
-  .nav-links a {
-    display: block;
-    padding: 0.85rem 1.5rem;
-    border-radius: 0;
-    font-size: 0.95rem;
+  .nav-links li {
     border-bottom: 1px solid var(--clr-border);
   }
 
-  .nav-links a:last-child { border-bottom: none; }
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 0;
+    font-size: 0.95rem;
+    transition: all var(--transition);
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: var(--clr-primary-light);
+    color: var(--clr-primary);
+    padding-left: 2rem;
+  }
 }
 
 /* ============================================================
-   7. FOOTER
+   8. FOOTER
    ============================================================ */
 .footer {
   background: var(--clr-dark);
@@ -498,8 +504,7 @@ button {
 }
 
 .footer .logo-circle { background: var(--clr-primary); }
-
-.footer .logo-text { color: #fff; }
+.footer .logo-text   { color: #fff; }
 
 .footer__brand-desc {
   margin: var(--space-sm) 0 var(--space-md);
@@ -587,7 +592,6 @@ button {
   z-index: 999;
   text-decoration: none;
   transition: all var(--transition);
-  /* Toujours visible — CSS only */
   opacity: 0.85;
 }
 
@@ -598,7 +602,7 @@ button {
 }
 
 /* ============================================================
-   8. RESPONSIVE FOOTER
+   9. RESPONSIVE FOOTER
    ============================================================ */
 @media (max-width: 1024px) {
   .footer__inner {

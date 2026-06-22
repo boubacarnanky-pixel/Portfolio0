@@ -1,3 +1,10 @@
+<?php
+/* ============================================================
+   services.php — Page Services
+   Portfolio Boubacar Nanky — Partie 2 PHP
+   ============================================================ */
+$page_active = 'services';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,52 +18,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<body>
+<body id="top">
 
-  <!-- CHECKBOX BURGER (CSS uniquement) -->
-  <input type="checkbox" id="menu-toggle" class="menu-toggle">
-
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="container navbar__inner">
-      <a href="index.html" class="logo-link">
-        <span class="logo-circle">NB</span>
-        <span class="logo-text">Nanky_B</span>
-      </a>
-
-      <label for="menu-toggle" class="burger-label" aria-label="Ouvrir le menu">
-        <span></span><span></span><span></span>
-      </label>
-
-      <nav class="nav-menu">
-        <ul class="nav-links">
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="service.html" class="active">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="competence.html">Compétences</a></li>
-          <li><a href="experience.html">Expérience</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="toggle-wrap">
-        <input type="checkbox" id="theme-toggle" class="theme-toggle">
-        <label for="theme-toggle" class="toggle-label" aria-label="Basculer le thème">
-          <span class="toggle-icon toggle-icon--sun">☀</span>
-          <span class="toggle-icon toggle-icon--moon">☽</span>
-          <span class="toggle-thumb"></span>
-        </label>
-      </div>
-    </div>
-  </header>
+  <?php require 'composants/navigation.php'; ?>
 
   <main>
 
-    <!-- PAGE HERO -->
     <section class="page-hero">
       <div class="container page-hero__inner">
         <nav class="page-hero__breadcrumb" aria-label="Fil d'Ariane">
-          <a href="index.html">Accueil</a>
+          <a href="index.php">Accueil</a>
           <span>›</span>
           <span>Services</span>
         </nav>
@@ -68,12 +39,10 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
     <section class="services">
       <div class="container">
         <div class="services__grid">
 
-          <!-- Carte 1 -->
           <div class="service-card">
             <div class="service-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -88,7 +57,6 @@
             </p>
           </div>
 
-          <!-- Carte 2 -->
           <div class="service-card">
             <div class="service-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -104,7 +72,6 @@
             </p>
           </div>
 
-          <!-- Carte 3 -->
           <div class="service-card">
             <div class="service-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -121,17 +88,12 @@
             </p>
           </div>
 
-          <!-- Carte 4 -->
           <div class="service-card">
             <div class="service-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <rect x="4" y="4" width="16" height="16" rx="2"/>
-                <circle cx="9" cy="9" r="1"/>
-                <circle cx="15" cy="9" r="1"/>
-                <circle cx="9" cy="15" r="1"/>
-                <circle cx="15" cy="15" r="1"/>
-                <line x1="9" y1="9" x2="15" y2="15"/>
-                <line x1="15" y1="9" x2="9" y2="15"/>
+                <circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/>
+                <circle cx="9" cy="15" r="1"/><circle cx="15" cy="15" r="1"/>
               </svg>
             </div>
             <h3 class="service-card__title">IoT avec Arduino</h3>
@@ -141,7 +103,6 @@
             </p>
           </div>
 
-          <!-- Carte 5 -->
           <div class="service-card">
             <div class="service-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -157,7 +118,6 @@
             </p>
           </div>
 
-          <!-- Carte 6 -->
           <div class="service-card">
             <div class="service-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -177,68 +137,17 @@
       </div>
     </section>
 
-    <!-- CTA BANNER -->
     <section class="cta-banner">
       <div class="container cta-banner__inner">
         <p class="cta-banner__tag">Visitez mon portfolio</p>
         <h2 class="cta-banner__title">Mes Projets</h2>
-        <a href="portfolio.html" class="btn btn--outline-white">Voir tous les projets</a>
+        <a href="portfolio.php" class="btn btn--outline-white">Voir tous les projets</a>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <div class="footer__brand">
-          <a href="index.html" class="logo-link">
-            <span class="logo-circle">NB</span>
-            <span class="logo-text">Nanky_B</span>
-          </a>
-          <p class="footer__brand-desc">Développeur Web passionné. Je transforme vos idées en expériences numériques mémorables.</p>
-          <a href="images/CV.pdf" class="btn btn--sm btn--outline-white" download>↓ Télécharger mon CV</a>
-        </div>
-        <div class="footer__links">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="competence.html">Compétences</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer__links">
-          <h4>Projets récents</h4>
-          <ul>
-            <li><a href="Projets/Site Vitrine Restaurant.html">Site Vitrine Restaurant</a></li>
-            <li><a href="Projets/Gestionnaire de Tâches.html">Gestionnaire de Tâches</a></li>
-            <li><a href="Projets/Blog Personnel.html">Blog Personnel</a></li>
-            <li><a href="Projets/Landing-de-page-animé/Baterrie.html">Landing Page Animée</a></li>
-          </ul>
-        </div>
-        <div class="footer__social">
-          <h4>Me trouver</h4>
-          <div class="footer__social-icons">
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://github.com/boubacarnanky-pixel" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="container">
-        <p>© 2025 Boubacar Nanky — Développé avec ❤️ en HTML &amp; CSS</p>
-        <p>Cours PHP &amp; MySQL — Professeur : M. Diouf</p>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#" class="scroll-top" aria-label="Retour en haut">↑</a>
+  <?php require 'composants/footer.php'; ?>
 
 </body>
 </html>
