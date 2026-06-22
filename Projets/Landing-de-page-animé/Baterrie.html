@@ -1,106 +1,121 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baterrie</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baterrie — Landing Page Animée</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Syne:wght@700;800&display=swap');
+    :root{--clr-primary:#E63946;--clr-primary-light:rgba(230,57,70,.10);--clr-bg:#0D0F1A;--clr-surface:rgba(255,255,255,.04);--clr-border:rgba(255,255,255,.10);--clr-dark:#0D0F1A;--clr-text:rgba(255,255,255,.7);--clr-text-dark:#ffffff;--font-display:'Syne',sans-serif;--font-body:'Plus Jakarta Sans',sans-serif;--radius-sm:8px;--radius-md:16px;--radius-full:100px;--navbar-h:68px;--transition:.3s ease}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}ul{list-style:none}a{text-decoration:none;color:inherit;transition:color var(--transition)}img{max-width:100%;display:block}
+    body{font-family:var(--font-body);background:var(--clr-bg);color:var(--clr-text);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
 
-        body {
-            height: 100vh;
-            background-color: #2e2e2e;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    /* NAVBAR */
+    .navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(13,15,26,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--clr-border)}
+    .navbar__inner{max-width:1180px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:var(--navbar-h);gap:1rem}
+    .logo-link{display:flex;align-items:center;gap:.6rem}
+    .logo-circle{width:38px;height:38px;background:var(--clr-primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.78rem;font-weight:800}
+    .logo-text{font-family:var(--font-display);font-size:1rem;font-weight:800;color:#fff}
+    .subnav{display:flex;align-items:center;gap:.25rem}
+    .subnav a{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.6);padding:.35rem .8rem;border-radius:var(--radius-full);transition:all var(--transition)}
+    .subnav a:hover,.subnav a.active{color:#fff;background:rgba(255,255,255,.08)}
+    .subnav a.active{color:var(--clr-primary);background:var(--clr-primary-light)}
+    .btn-back{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:700;color:rgba(255,255,255,.7);padding:.45rem 1.1rem;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--radius-full);transition:all var(--transition)}
+    .btn-back:hover{color:#fff;border-color:var(--clr-primary);background:var(--clr-primary-light)}
 
-        .battery-top {
-            width: 30px;
-            height: 10px;
-            background-color: black;
-            margin: 0 auto;
-            border: 3px solid silver;
-            border-top-right-radius: 8px;
-            border-top-left-radius: 8px;
-        }
+    /* MAIN */
+    main{padding-top:var(--navbar-h);min-height:calc(100vh - var(--navbar-h) - 80px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding-bottom:4rem}
 
-        .battery-content {
-            width: 150px;
-            height: 250px;
-            background-color: black;
-            margin: 0 auto;
-            border: 3px solid silver;
-            border-radius: 18px;
-            position: relative;
-        }
+    /* PAGE TITLE */
+    .demo-title{text-align:center;padding:2.5rem 1.5rem 0}
+    .section-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--clr-primary);background:var(--clr-primary-light);padding:.3rem .9rem;border-radius:var(--radius-full);margin-bottom:.75rem}
+    .demo-title h1{font-family:var(--font-display);font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;color:#fff;margin-bottom:.5rem}
+    .demo-title p{color:rgba(255,255,255,.5);font-size:.9rem}
 
-        .charge {
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            border-radius: 14px;
-            animation: battery 8s linear infinite;
-        }
+    /* ── ANIMATION BATTERIE ORIGINALE (conservée) ── */
+    .battery-top{width:30px;height:10px;background-color:black;margin:0 auto;border:3px solid silver;border-top-right-radius:8px;border-top-left-radius:8px}
+    .battery-content{width:150px;height:250px;background-color:black;margin:0 auto;border:3px solid silver;border-radius:18px;position:relative}
+    .charge{width:100%;position:absolute;bottom:0;border-radius:14px;animation:battery 8s linear infinite}
+    @keyframes battery{
+      0%{height:0%;background-color:red}
+      25%{height:25%;background-color:orange}
+      50%{height:50%;background-color:yellow}
+      75%{height:75%;background-color:#d7fc03}
+      100%{height:100%;background-color:rgb(0,255,0)}
+    }
 
-        @keyframes battery {
-            0% {
-                height: 0%;
-                background-color: red;
-            }
+    /* DEMO CARD */
+    .demo-card{background:var(--clr-surface);border:1.5px solid var(--clr-border);border-radius:var(--radius-md);padding:2.5rem 3rem;display:flex;flex-direction:column;align-items:center;gap:1rem}
+    .demo-label{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35)}
 
-            25% {
-                height: 25%;
-                background-color: orange;
-            }
+    /* TAGS */
+    .tags{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center}
+    .tag{padding:.2rem .7rem;background:var(--clr-primary-light);color:var(--clr-primary);border-radius:var(--radius-full);font-size:.72rem;font-weight:700}
 
-            50% {
-                height: 50%;
-                background-color: yellow;
-            }
-
-            75% {
-                height: 75%;
-                background-color: #d7fc03;
-            }
-
-            100% {
-                height: 100%;
-                background-color: rgb(0, 255, 0);
-            }
-        }
-    </style>
+    /* FOOTER */
+    footer{background:rgba(0,0,0,.4);border-top:1px solid var(--clr-border);padding:1.5rem}
+    .footer__inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    .footer-logo{display:flex;align-items:center;gap:.6rem}
+    .footer__copy{font-size:.82rem;color:rgba(255,255,255,.25)}
+    .footer__btn-back{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:700;color:rgba(255,255,255,.7);padding:.45rem 1.1rem;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--radius-full);transition:all var(--transition)}
+    .footer__btn-back:hover{background:var(--clr-primary);color:#fff;border-color:var(--clr-primary)}
+    @media(max-width:480px){.subnav{display:none}}
+  </style>
 </head>
-
 <body>
-    <header>
-        <div class="logo-name">
-            <h2></h2>
-        </div>
-        <!--Ici y'aura qu'un bouton next pour les autre projet d'animation-->
-        <ul class="menu">
-            <li><a href="/portfolio.html">Retour </a></li>
-            <li><a href="Baterrie.html" target="_blank" rel="noopener noreferrer">baterrie</a></li>
-            <li><a href="grid-card.html" target="_blank" rel="noopener noreferrer">grid-card</a></li>
-            <li><a href="bouton.html" target="_blank" rel="noopener noreferrer">bouton</a></li>
-        </ul>
-    </header>
-    <main>
-        <section class="container">
-            <h1>Baterrie</h1>
-            <div class="main">
-                <div class="battery-top"></div>
-                <div class="battery-content">
-                    <div class="charge"></div>
-                </div>
-            </div>
-        </section>
-    </main>
-</body>
 
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="../../portfolio.php" class="logo-link">
+        <span class="logo-circle">NB</span>
+        <span class="logo-text">Nanky_B</span>
+      </a>
+      <nav class="subnav">
+        <a href="Baterrie.html" class="active">Batterie</a>
+        <a href="grid-card.html">Grid Card</a>
+        <a href="bouton.html">Bouton</a>
+      </nav>
+      <a href="../../portfolio.php" class="btn-back">
+        <i class="fa fa-arrow-left"></i> Portfolio
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="demo-title">
+      <div class="section-tag">Animation CSS — Projet 03</div>
+      <h1>Batterie Animée</h1>
+      <p>Animation CSS pure simulant la charge d'une batterie</p>
+    </div>
+
+    <div class="demo-card">
+      <span class="demo-label">Démo live</span>
+      <div class="battery-top"></div>
+      <div class="battery-content">
+        <div class="charge"></div>
+      </div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">CSS Animation</span>
+      <span class="tag">@keyframes</span>
+      <span class="tag">100% CSS</span>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer__inner">
+      <a href="../../portfolio.php" class="footer-logo">
+        <span class="logo-circle">NB</span>
+        <span class="logo-text">Nanky_B</span>
+      </a>
+      <span class="footer__copy">© 2026 Boubacar Nanky</span>
+      <a href="../../portfolio.php" class="footer__btn-back">
+        <i class="fa fa-arrow-left"></i> Retour au portfolio
+      </a>
+    </div>
+  </footer>
+
+</body>
 </html>

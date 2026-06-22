@@ -1,58 +1,248 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Blog</title>
-    <link rel="stylesheet" href="../css/styl.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Personnel — Boubacar Nanky</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ── Design tokens ── */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap');
+    :root {
+      --clr-primary: #E63946;
+      --clr-primary-light: rgba(230,57,70,.10);
+      --clr-bg: #F8F9FD;
+      --clr-surface: #FFFFFF;
+      --clr-border: #E4E8F5;
+      --clr-dark: #0D0F1A;
+      --clr-text: #4B506B;
+      --clr-text-dark: #0D0F1A;
+      --clr-text-muted: #8B90A8;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-full: 100px;
+      --navbar-h: 68px;
+      --shadow-sm: 0 2px 16px rgba(13,15,26,.06);
+      --shadow-md: 0 8px 40px rgba(13,15,26,.10);
+      --shadow-red: 0 8px 30px rgba(230,57,70,.30);
+      --transition: .3s ease;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    ul { list-style:none; }
+    a { text-decoration:none; color:inherit; transition:color var(--transition); }
+    img { max-width:100%; display:block; }
+    body { font-family:var(--font-body); background:var(--clr-bg); color:var(--clr-text); line-height:1.6; -webkit-font-smoothing:antialiased; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position:fixed; top:0; left:0; width:100%; z-index:1000;
+      background:rgba(255,255,255,.96); backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--clr-border);
+      box-shadow:0 2px 20px rgba(13,15,26,.06);
+    }
+    .navbar__inner {
+      max-width:1180px; margin:0 auto; padding:0 1.5rem;
+      display:flex; align-items:center; justify-content:space-between;
+      height:var(--navbar-h); gap:1rem;
+    }
+    .logo-link { display:flex; align-items:center; gap:.6rem; }
+    .logo-circle {
+      width:38px; height:38px; background:var(--clr-primary); color:#fff;
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-display); font-size:.78rem; font-weight:800; flex-shrink:0;
+    }
+    .logo-text { font-family:var(--font-display); font-size:1rem; font-weight:800; color:var(--clr-text-dark); }
+
+    .nav-right { display:flex; align-items:center; gap:.75rem; }
+    .breadcrumb { display:flex; align-items:center; gap:.4rem; font-size:.78rem; color:var(--clr-text-muted); }
+    .breadcrumb a:hover { color:var(--clr-primary); }
+    .breadcrumb span { color:var(--clr-primary); font-weight:600; }
+
+    .btn-back {
+      display:inline-flex; align-items:center; gap:.45rem;
+      font-size:.82rem; font-weight:700; color:var(--clr-text-dark);
+      padding:.45rem 1.1rem; border:1.5px solid var(--clr-border);
+      border-radius:var(--radius-full); transition:all var(--transition);
+    }
+    .btn-back:hover { color:var(--clr-primary); border-color:var(--clr-primary); background:var(--clr-primary-light); }
+
+    /* ── MAIN ── */
+    main { padding-top:calc(var(--navbar-h) + 3rem); padding-bottom:5rem; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background:var(--clr-bg); text-align:center; padding:3rem 1.5rem;
+      position:relative; overflow:hidden;
+    }
+    .page-hero::before {
+      content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+      background:radial-gradient(ellipse at top center, rgba(230,57,70,.05) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .section-tag {
+      display:inline-block; font-size:.72rem; font-weight:700;
+      letter-spacing:.18em; text-transform:uppercase; color:var(--clr-primary);
+      background:var(--clr-primary-light); padding:.3rem .9rem;
+      border-radius:var(--radius-full); margin-bottom:.75rem;
+    }
+    .page-hero h1 {
+      font-family:var(--font-display); font-size:clamp(2rem,5vw,3rem);
+      font-weight:800; color:var(--clr-text-dark); margin-bottom:.5rem;
+    }
+    .page-hero p { color:var(--clr-text); font-size:.95rem; max-width:480px; margin:0 auto; }
+
+    /* ── ARTICLE BLOG ── */
+    .blog-wrap { max-width:760px; margin:3rem auto 0; padding:0 1.5rem; }
+
+    .blog-card {
+      background:var(--clr-surface); border:1.5px solid var(--clr-border);
+      border-radius:var(--radius-md); padding:2.5rem;
+      box-shadow:var(--shadow-sm);
+    }
+
+    .blog-card .date {
+      display:inline-flex; align-items:center; gap:.4rem;
+      font-size:.78rem; font-weight:700; color:var(--clr-primary);
+      background:var(--clr-primary-light); padding:.25rem .75rem;
+      border-radius:var(--radius-full); margin-bottom:1.75rem;
+    }
+
+    .blog-card h2 {
+      font-family:var(--font-display); font-size:1.5rem; font-weight:800;
+      color:var(--clr-text-dark); margin-bottom:1rem; line-height:1.25;
+    }
+
+    .blog-card h3 {
+      font-family:var(--font-display); font-size:1.1rem; font-weight:700;
+      color:var(--clr-text-dark); margin:1.75rem 0 .6rem;
+      padding-left:.85rem; border-left:3px solid var(--clr-primary);
+    }
+
+    .blog-card p { font-size:.93rem; line-height:1.85; color:var(--clr-text); margin-bottom:.75rem; }
+
+    .blog-card ul { display:flex; flex-direction:column; gap:.5rem; padding-left:1.25rem; margin-bottom:.75rem; }
+    .blog-card ul li {
+      font-size:.9rem; color:var(--clr-text); line-height:1.7;
+      list-style:disc; list-style-position:outside;
+    }
+    .blog-card ul li::marker { color:var(--clr-primary); }
+
+    .blog-divider { border:none; border-top:1px solid var(--clr-border); margin:2rem 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background:var(--clr-dark); padding:2rem 1.5rem;
+      font-family:var(--font-body);
+    }
+    .footer__inner {
+      max-width:1180px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:1rem;
+    }
+    .footer-logo { display:flex; align-items:center; gap:.6rem; }
+    .footer-logo .logo-text { color:#fff; }
+    .footer__copy { font-size:.82rem; color:rgba(255,255,255,.35); }
+    .footer__btn-back {
+      display:inline-flex; align-items:center; gap:.45rem;
+      font-size:.82rem; font-weight:700; color:#fff;
+      padding:.45rem 1.1rem; border:1.5px solid rgba(255,255,255,.25);
+      border-radius:var(--radius-full); transition:all var(--transition);
+    }
+    .footer__btn-back:hover { background:#fff; color:var(--clr-primary); border-color:#fff; }
+  </style>
 </head>
-<style>
-body{
-    background-color:#E8ECF8;
-}
-
-</style>
 <body>
-    <header>
 
-        <ul class="menu">
-            <li><a href="../portfolio.html" >Retour </a></li>
+  <!-- ══ NAVBAR ══ -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="../portfolio.php" class="logo-link">
+        <span class="logo-circle">NB</span>
+        <span class="logo-text">Nanky_B</span>
+      </a>
+      <nav class="nav-right">
+        <span class="breadcrumb">
+          <a href="../portfolio.php">Portfolio</a>
+          <span>›</span>
+          <span>Blog Personnel</span>
+        </span>
+        <a href="../portfolio.php" class="btn-back">
+          <i class="fa fa-arrow-left"></i> Retour
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══ PAGE HERO ══ -->
+    <div class="page-hero">
+      <div class="section-tag">Blog Personnel</div>
+      <h1>Mon Blog de Développeur</h1>
+      <p>Mes apprentissages, défis et réflexions sur le développement web.</p>
+    </div>
+
+    <!-- ══ ARTICLE ══ -->
+    <div class="blog-wrap">
+      <article class="blog-card">
+
+        <span class="date">
+          <i class="fa fa-calendar-days"></i> Publié le 15 avril 2026
+        </span>
+
+        <h2>Mon premier site web</h2>
+
+        <p>
+          Aujourd'hui, j'ai créé mon premier site web en HTML et CSS.
+          Au début c'était difficile. Mais j'ai appris à structurer une page
+          et à lui donner un style cohérent.
+        </p>
+
+        <hr class="blog-divider">
+
+        <h3>Ce que j'ai appris</h3>
+        <ul>
+          <li>Les balises HTML et la sémantique web</li>
+          <li>Le CSS pour styliser et embellir</li>
+          <li>Flexbox pour organiser les éléments</li>
         </ul>
-    </header>
-    <main>
-    <article class="container blog-post">
-         <div class="section-header">
-                    <h2 class="section-title">Mon Blog Personnel</h2>
-                     <p class="section-tag">Mes debuts dans le développement web</p>
-                </div>
-                <h2>Mon premier site web</h2>
-                <p class="date">Publié le 15 avril 2026</p>
-                <p>Aujourd'hui, j'ai créé mon premier site web en html et css . 
-                    Au début c'était difficile. Mais j'ai appris à structurer une page . 
-                </p>
-                <h3>Ce que j'ai appris</h3>
-                <ul>
-                    <li>Les balises HTML</li>
-                    <li>Le CSS pour styliser</li>
-                    <li>Flexbox pour organiser les élements</li>
-                </ul>
-                <p>Ce projet ma motivé à continuer dans le développement web</p>
-                <h3>Mes difficultés</h3>
-                <p>
-                    j'ai eu du mal avec le positionnement et le responcive design,
-                    mais avec le temps ça devient plus facile .
-                </p>
-                <h3>Conclusion</h3>
-                <p>
-                    Je suis fier de mon progrès et je vais continuer à apprendre .
-                </p>
-    </article>
-        
-    </main>
-    <footer>
-        <p>&copy; 2026 Boubacar Nanky </p>
-    </footer>
+
+        <p>Ce projet m'a motivé à continuer dans le développement web.</p>
+
+        <h3>Mes difficultés</h3>
+        <p>
+          J'ai eu du mal avec le positionnement et le responsive design,
+          mais avec le temps et la pratique, ça devient plus fluide et naturel.
+        </p>
+
+        <h3>Conclusion</h3>
+        <p>
+          Je suis fier de mon progrès et je vais continuer à apprendre,
+          project après project, vers un niveau toujours plus élevé.
+        </p>
+
+      </article>
+    </div>
+
+  </main>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer__inner">
+      <a href="../portfolio.php" class="footer-logo">
+        <span class="logo-circle">NB</span>
+        <span class="logo-text">Nanky_B</span>
+      </a>
+      <span class="footer__copy">© 2026 Boubacar Nanky</span>
+      <a href="../portfolio.php" class="footer__btn-back">
+        <i class="fa fa-arrow-left"></i> Retour au portfolio
+      </a>
+    </div>
+  </footer>
+
 </body>
 </html>

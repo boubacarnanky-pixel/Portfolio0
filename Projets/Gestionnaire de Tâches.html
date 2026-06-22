@@ -1,23 +1,171 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestionnaire de Tâches</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestionnaire de Tâches — Boubacar Nanky</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap');
+    :root{--clr-primary:#E63946;--clr-primary-light:rgba(230,57,70,.10);--clr-bg:#F8F9FD;--clr-surface:#FFFFFF;--clr-border:#E4E8F5;--clr-dark:#0D0F1A;--clr-text:#4B506B;--clr-text-dark:#0D0F1A;--clr-text-muted:#8B90A8;--font-display:'Syne',sans-serif;--font-body:'Plus Jakarta Sans',sans-serif;--radius-sm:8px;--radius-md:16px;--radius-full:100px;--navbar-h:68px;--shadow-sm:0 2px 16px rgba(13,15,26,.06);--shadow-md:0 8px 40px rgba(13,15,26,.10);--transition:.3s ease}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}ul{list-style:none}a{text-decoration:none;color:inherit;transition:color var(--transition)}img{max-width:100%;display:block}
+    body{font-family:var(--font-body);background:var(--clr-bg);color:var(--clr-text);line-height:1.6;-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:var(--font-display);color:var(--clr-text-dark);line-height:1.2}
+
+    .navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--clr-border);box-shadow:0 2px 20px rgba(13,15,26,.06)}
+    .navbar__inner{max-width:1180px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:var(--navbar-h);gap:1rem}
+    .logo-link{display:flex;align-items:center;gap:.6rem}
+    .logo-circle{width:38px;height:38px;background:var(--clr-primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.78rem;font-weight:800}
+    .logo-text{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--clr-text-dark)}
+    .nav-right{display:flex;align-items:center;gap:.75rem}
+    .breadcrumb{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--clr-text-muted)}
+    .breadcrumb a:hover{color:var(--clr-primary)}.breadcrumb span{color:var(--clr-primary);font-weight:600}
+    .btn-back{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:700;color:var(--clr-text-dark);padding:.45rem 1.1rem;border:1.5px solid var(--clr-border);border-radius:var(--radius-full);transition:all var(--transition)}
+    .btn-back:hover{color:var(--clr-primary);border-color:var(--clr-primary);background:var(--clr-primary-light)}
+
+    main{padding-top:calc(var(--navbar-h) + 3rem);padding-bottom:5rem}
+
+    .page-hero{background:var(--clr-bg);text-align:center;padding:3rem 1.5rem;position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top center,rgba(230,57,70,.05) 0%,transparent 70%);pointer-events:none}
+    .section-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--clr-primary);background:var(--clr-primary-light);padding:.3rem .9rem;border-radius:var(--radius-full);margin-bottom:.75rem}
+    .page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);font-weight:800;color:var(--clr-text-dark);margin-bottom:.5rem}
+    .page-hero p{color:var(--clr-text);font-size:.95rem;max-width:520px;margin:0 auto}
+
+    .container{max-width:960px;margin:0 auto;padding:0 1.5rem}
+
+    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:3rem auto;max-width:960px;padding:0 1.5rem}
+    .info-card{background:var(--clr-surface);border:1.5px solid var(--clr-border);border-radius:var(--radius-md);padding:1.5rem;text-align:center;box-shadow:var(--shadow-sm);transition:all var(--transition)}
+    .info-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:var(--clr-primary-light)}
+    .info-card__icon{width:48px;height:48px;background:var(--clr-primary-light);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--clr-primary);font-size:1.2rem}
+    .info-card h3{font-size:.95rem;font-weight:700;color:var(--clr-text-dark);margin-bottom:.4rem}
+    .info-card p{font-size:.82rem;color:var(--clr-text);line-height:1.7}
+
+    .project-detail{background:var(--clr-surface);border:1.5px solid var(--clr-border);border-radius:var(--radius-md);padding:2.5rem;box-shadow:var(--shadow-sm)}
+    .project-detail__hero{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);border-radius:var(--radius-sm);height:220px;display:flex;align-items:center;justify-content:center;margin-bottom:2rem;position:relative;overflow:hidden}
+    .project-detail__hero-num{font-family:var(--font-display);font-size:8rem;font-weight:800;color:rgba(255,255,255,.12);line-height:1}
+    .project-detail__hero-title{position:absolute;color:#fff;font-family:var(--font-display);font-size:1.75rem;font-weight:800;text-shadow:0 2px 20px rgba(0,0,0,.3);text-align:center;padding:0 1rem}
+    .project-detail h2{font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--clr-text-dark);margin-bottom:.75rem;margin-top:1.5rem}
+    .project-detail h2:first-of-type{margin-top:0}
+    .project-detail p{font-size:.93rem;line-height:1.85;color:var(--clr-text);margin-bottom:1rem}
+    .feature-list{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem}
+    .feature-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;color:var(--clr-text)}
+    .feature-list li i{color:var(--clr-primary);margin-top:.2rem;flex-shrink:0}
+    .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+    .tag{padding:.2rem .7rem;background:var(--clr-primary-light);color:var(--clr-primary);border-radius:var(--radius-full);font-size:.72rem;font-weight:700}
+    .status-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:700;padding:.3rem .85rem;border-radius:var(--radius-full);margin-bottom:1.25rem}
+    .status-badge--wip{background:rgba(245,158,11,.12);color:#d97706}
+
+    footer{background:var(--clr-dark);padding:2rem 1.5rem;font-family:var(--font-body)}
+    .footer__inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    .footer-logo{display:flex;align-items:center;gap:.6rem}
+    .footer-logo .logo-text{color:#fff}
+    .footer__copy{font-size:.82rem;color:rgba(255,255,255,.35)}
+    .footer__btn-back{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:700;color:#fff;padding:.45rem 1.1rem;border:1.5px solid rgba(255,255,255,.25);border-radius:var(--radius-full);transition:all var(--transition)}
+    .footer__btn-back:hover{background:#fff;color:var(--clr-primary);border-color:#fff}
+    @media(max-width:640px){.info-grid{grid-template-columns:1fr}.project-detail{padding:1.5rem}}
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo-name">
-            <h2></h2>
+
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="../portfolio.php" class="logo-link">
+        <span class="logo-circle">NB</span>
+        <span class="logo-text">Nanky_B</span>
+      </a>
+      <nav class="nav-right">
+        <span class="breadcrumb">
+          <a href="../portfolio.php">Portfolio</a>
+          <span>›</span>
+          <span>Gestionnaire de Tâches</span>
+        </span>
+        <a href="../portfolio.php" class="btn-back">
+          <i class="fa fa-arrow-left"></i> Retour
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="page-hero">
+      <div class="section-tag">Projet 02</div>
+      <h1>Gestionnaire de Tâches</h1>
+      <p>Application CRUD complète avec PHP, MySQL et gestion des priorités.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card__icon"><i class="fa fa-code"></i></div>
+        <h3>Technologies</h3>
+        <p>PHP · MySQL · HTML5 · CSS3</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card__icon"><i class="fa fa-calendar"></i></div>
+        <h3>Période</h3>
+        <p>2025 / 2026 — Licence 2</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card__icon"><i class="fa fa-database"></i></div>
+        <h3>Type</h3>
+        <p>Application web CRUD complète</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="project-detail">
+
+        <div class="project-detail__hero">
+          <span class="project-detail__hero-num">02</span>
+          <span class="project-detail__hero-title">Gestionnaire de Tâches</span>
         </div>
-        <ul class="menu">
-            <li><a href="../portfolio.html" >Retour </a></li>
+
+        <span class="status-badge status-badge--wip">
+          <i class="fa fa-circle-notch fa-spin"></i> En développement
+        </span>
+
+        <h2>Présentation du projet</h2>
+        <p>
+          Application web de gestion de tâches développée en PHP et MySQL. Elle permet
+          de créer, lire, modifier et supprimer des tâches (CRUD complet) avec
+          un système de priorités et de catégories.
+        </p>
+
+        <h2>Fonctionnalités prévues</h2>
+        <ul class="feature-list">
+          <li><i class="fa fa-check"></i> Création et gestion de tâches (CRUD complet)</li>
+          <li><i class="fa fa-check"></i> Système de priorités (Haute / Moyenne / Basse)</li>
+          <li><i class="fa fa-check"></i> Authentification utilisateur</li>
+          <li><i class="fa fa-check"></i> Base de données MySQL relationnelle</li>
+          <li><i class="fa fa-check"></i> Interface responsive et intuitive</li>
         </ul>
-    </header>
-    <main>
-        <section class="container">
-            <h1>Gestionnaire de Tâches</h1>
-        </section>
-    </main>
+
+        <div class="tags">
+          <span class="tag">PHP</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">CRUD</span>
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">Authentification</span>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer__inner">
+      <a href="../portfolio.php" class="footer-logo">
+        <span class="logo-circle">NB</span>
+        <span class="logo-text">Nanky_B</span>
+      </a>
+      <span class="footer__copy">© 2026 Boubacar Nanky</span>
+      <a href="../portfolio.php" class="footer__btn-back">
+        <i class="fa fa-arrow-left"></i> Retour au portfolio
+      </a>
+    </div>
+  </footer>
+
 </body>
 </html>

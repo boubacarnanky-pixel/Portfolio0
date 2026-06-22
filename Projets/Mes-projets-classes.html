@@ -1,74 +1,190 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes-projets-classes</title>
-     <link rel="stylesheet" href="../css/styl.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes-projets-classes — Boubacar Nanky</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap');
+    :root{--clr-primary:#E63946;--clr-primary-light:rgba(230,57,70,.10);--clr-bg:#F8F9FD;--clr-surface:#FFFFFF;--clr-border:#E4E8F5;--clr-dark:#0D0F1A;--clr-dark-mid:#1A1D2E;--clr-text:#4B506B;--clr-text-dark:#0D0F1A;--clr-text-muted:#8B90A8;--font-display:'Syne',sans-serif;--font-body:'Plus Jakarta Sans',sans-serif;--radius-sm:8px;--radius-md:16px;--radius-full:100px;--navbar-h:68px;--shadow-sm:0 2px 16px rgba(13,15,26,.06);--shadow-md:0 8px 40px rgba(13,15,26,.10);--transition:.3s ease}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}ul{list-style:none}a{text-decoration:none;color:inherit;transition:color var(--transition)}img{max-width:100%;display:block}
+    body{font-family:var(--font-body);background:var(--clr-bg);color:var(--clr-text);line-height:1.6;-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:var(--font-display);color:var(--clr-text-dark);line-height:1.2}
+
+    .navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--clr-border);box-shadow:0 2px 20px rgba(13,15,26,.06)}
+    .navbar__inner{max-width:1180px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:var(--navbar-h);gap:1rem}
+    .logo-link{display:flex;align-items:center;gap:.6rem}
+    .logo-circle{width:38px;height:38px;background:var(--clr-primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.78rem;font-weight:800}
+    .logo-text{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--clr-text-dark)}
+    .nav-right{display:flex;align-items:center;gap:.75rem}
+    .breadcrumb{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--clr-text-muted)}
+    .breadcrumb a:hover{color:var(--clr-primary)}.breadcrumb span{color:var(--clr-primary);font-weight:600}
+    .btn-back{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:700;color:var(--clr-text-dark);padding:.45rem 1.1rem;border:1.5px solid var(--clr-border);border-radius:var(--radius-full);transition:all var(--transition)}
+    .btn-back:hover{color:var(--clr-primary);border-color:var(--clr-primary);background:var(--clr-primary-light)}
+
+    main{padding-top:calc(var(--navbar-h) + 3rem);padding-bottom:5rem}
+
+    .page-hero{background:var(--clr-bg);text-align:center;padding:3rem 1.5rem;position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top center,rgba(230,57,70,.05) 0%,transparent 70%);pointer-events:none}
+    .section-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--clr-primary);background:var(--clr-primary-light);padding:.3rem .9rem;border-radius:var(--radius-full);margin-bottom:.75rem}
+    .page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);font-weight:800;color:var(--clr-text-dark);margin-bottom:.5rem}
+    .page-hero p{color:var(--clr-text);font-size:.95rem;max-width:520px;margin:0 auto}
+
+    .container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+
+    /* PROJECT CARDS */
+    .projets-grid{display:flex;flex-direction:column;gap:2.5rem;margin-top:3rem}
+
+    .projet-card{background:var(--clr-surface);border:1.5px solid var(--clr-border);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);transition:all var(--transition)}
+    .projet-card:hover{box-shadow:var(--shadow-md);border-color:var(--clr-primary-light);transform:translateY(-4px)}
+
+    .projet-card__header{background:linear-gradient(135deg,var(--clr-dark) 0%,var(--clr-dark-mid) 100%);padding:1.25rem 1.75rem;display:flex;align-items:center;gap:1rem}
+    .projet-card__icon{width:44px;height:44px;background:var(--clr-primary-light);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--clr-primary);font-size:1.1rem;flex-shrink:0}
+    .projet-card__header h2{font-family:var(--font-display);font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.04em;line-height:1.3}
+
+    .projet-card__body{padding:1.75rem}
+    .projet-card__body p{font-size:.9rem;line-height:1.85;color:var(--clr-text);margin-bottom:1.25rem}
+    .projet-card__body strong{color:var(--clr-text-dark);font-weight:700}
+
+    .projet-card__img{width:100%;max-width:520px;border-radius:var(--radius-sm);border:1.5px solid var(--clr-border);margin:1rem 0;transition:all var(--transition)}
+    .projet-card__img:hover{border-color:var(--clr-primary-light);box-shadow:var(--shadow-md)}
+
+    .img-caption{font-size:.78rem;color:var(--clr-text-muted);margin-top:.4rem;margin-bottom:1rem;font-style:italic}
+
+    .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+    .tag{padding:.2rem .7rem;background:var(--clr-primary-light);color:var(--clr-primary);border-radius:var(--radius-full);font-size:.72rem;font-weight:700}
+
+    footer{background:var(--clr-dark);padding:2rem 1.5rem;font-family:var(--font-body)}
+    .footer__inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    .footer-logo{display:flex;align-items:center;gap:.6rem}
+    .footer-logo .logo-text{color:#fff}
+    .footer__copy{font-size:.82rem;color:rgba(255,255,255,.35)}
+    .footer__btn-back{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:700;color:#fff;padding:.45rem 1.1rem;border:1.5px solid rgba(255,255,255,.25);border-radius:var(--radius-full);transition:all var(--transition)}
+    .footer__btn-back:hover{background:#fff;color:var(--clr-primary);border-color:#fff}
+    @media(max-width:640px){.projet-card__body{padding:1.25rem}}
+  </style>
 </head>
-<style>
-body{
-    background-color:#E8ECF8;
-}
-.images{
-    width: 100%;
-    max-width: 500px;
-    margin: 4rem 0;
-}
-.images:hover{
-    border: 2px solid  #1A1A2E;
-    border-radius: 10px;
-    transition: all 0.3s ease ;
-}
-h2{
-    color:  #1A1A2E ;
-    margin: 2rem 0;
-}
-/*================================================================
- RESPONCIVE__DESIGN / AVEC MEDIA QUERY : 
- ===============================================================*/
-
-
-</style>
 <body>
-    <header>
-        <div class="logo-name">
-            <h2></h2>
-        </div>
-        <ul class="menu">
-             <li><a href="../portfolio.html" >Retour </a></li>
-        </ul>
-    </header>
-    <main>
-        <section class="container prjets__inner">
-             <div class="section-header">
-                    <p class="section-tag">cours</p>
-                    <h2 class="section-title">Mes-projets-classes</h2>
-                </div>
-    
-            <div class="projet">
-                <h2>Projet-IOT : POUBELLE INTELLIGENTS</h2>
-                <p>la porte de la poubelle s'ouvre à l'approche d'un objets grace au <strong>capteur ultrason</strong>  qui detecte le mouvement de l'objet . Et <strong>le servomoteur</strong>  ouvre la porte de la poubelle. 
-                    ce processus obeis à la aux instructions qu'on à déjà saisie au niveau de <strong>IDE arduino</strong> 
-                </p>
-                <img src="../images/Arduino.jpeg" class="images" alt="POUBELLE INTELLIGENTS">
-            </div>
-            <div class="projet">
-                <h2>Projet-PHP : FONCTION QUI AFFICHE 10 TIRETS</h2>
-                <img src="../images/php.png"  class="images" alt="code php permettant d'afficher 10 tirets">
-                <P><strong>Et voici le resultats .</strong></P>
-                <img src="../images/php-resultats.png"  class="images" alt="code php permettant d'afficher 10 tirets">
-            </div>
 
-            <div class="projet">
-                <h2>Projet-IOT : CREATION D'UN RESEAU </h2>
-                <p>
-                </p>
-                <img src="../images/AD-reseau.jpeg"  class="images" alt="Réseau de trois machine et d'un routeur .">
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="../portfolio.php" class="logo-link">
+        <span class="logo-circle">NB</span>
+        <span class="logo-text">Nanky_B</span>
+      </a>
+      <nav class="nav-right">
+        <span class="breadcrumb">
+          <a href="../portfolio.php">Portfolio</a>
+          <span>›</span>
+          <span>Projets Classe</span>
+        </span>
+        <a href="../portfolio.php" class="btn-back">
+          <i class="fa fa-arrow-left"></i> Retour
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="page-hero">
+      <div class="section-tag">Projet 04</div>
+      <h1>Mes Projets Classe</h1>
+      <p>Projets réalisés en cours — IoT avec Arduino, PHP et Administration Réseaux.</p>
+    </div>
+
+    <div class="container">
+      <div class="projets-grid">
+
+        <!-- Projet IoT 1 -->
+        <div class="projet-card">
+          <div class="projet-card__header">
+            <div class="projet-card__icon"><i class="fa fa-microchip"></i></div>
+            <h2>Projet IoT — Poubelle Intelligente</h2>
+          </div>
+          <div class="projet-card__body">
+            <p>
+              La porte de la poubelle s'ouvre à l'approche d'un objet grâce au
+              <strong>capteur ultrason</strong> qui détecte le mouvement. Le
+              <strong>servomoteur</strong> ouvre ensuite la porte automatiquement.
+              Ce processus obéit aux instructions saisies dans l'<strong>IDE Arduino</strong>.
+            </p>
+            <img src="../image/Arduino.jpeg" class="projet-card__img" alt="Poubelle Intelligente — Projet Arduino">
+            <span class="img-caption">Montage du projet sur breadboard avec capteur ultrason et servomoteur</span>
+            <div class="tags">
+              <span class="tag">Arduino</span>
+              <span class="tag">IoT</span>
+              <span class="tag">Capteur ultrason</span>
+              <span class="tag">Servomoteur</span>
             </div>
-        </section>
-    </main>
+          </div>
+        </div>
+
+        <!-- Projet PHP -->
+        <div class="projet-card">
+          <div class="projet-card__header">
+            <div class="projet-card__icon"><i class="fa-brands fa-php"></i></div>
+            <h2>Projet PHP — Afficher 10 Tirets</h2>
+          </div>
+          <div class="projet-card__body">
+            <p>
+              Première fonction PHP réalisée en cours : une boucle qui affiche
+              <strong>10 tirets</strong> en utilisant une structure de contrôle <strong>for</strong>.
+              Un premier pas concret dans la programmation côté serveur.
+            </p>
+            <img src="../image/php.png" class="projet-card__img" alt="Code PHP — Fonction affichant 10 tirets">
+            <span class="img-caption">Code source PHP de la fonction</span>
+            <img src="../image/php-resultats.png" class="projet-card__img" alt="Résultats affichés dans le navigateur">
+            <span class="img-caption">Résultat affiché dans le navigateur</span>
+            <div class="tags">
+              <span class="tag">PHP</span>
+              <span class="tag">Boucle for</span>
+              <span class="tag">Fonctions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet Réseau -->
+        <div class="projet-card">
+          <div class="projet-card__header">
+            <div class="projet-card__icon"><i class="fa fa-network-wired"></i></div>
+            <h2>Projet IoT — Création d'un Réseau</h2>
+          </div>
+          <div class="projet-card__body">
+            <p>
+              Conception et simulation d'un <strong>réseau local</strong> composé de trois machines
+              et d'un routeur. Configuration des adresses IP, des masques de sous-réseau
+              et des tables de routage pour assurer la communication entre les postes.
+            </p>
+            <img src="../image/AD-reseau.jpeg" class="projet-card__img" alt="Réseau de trois machines et d'un routeur">
+            <span class="img-caption">Schéma du réseau — 3 machines et 1 routeur</span>
+            <div class="tags">
+              <span class="tag">Réseaux</span>
+              <span class="tag">TCP/IP</span>
+              <span class="tag">Routeur</span>
+              <span class="tag">Administration</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer__inner">
+      <a href="../portfolio.php" class="footer-logo">
+        <span class="logo-circle">NB</span>
+        <span class="logo-text">Nanky_B</span>
+      </a>
+      <span class="footer__copy">© 2026 Boubacar Nanky</span>
+      <a href="../portfolio.php" class="footer__btn-back">
+        <i class="fa fa-arrow-left"></i> Retour au portfolio
+      </a>
+    </div>
+  </footer>
+
 </body>
 </html>

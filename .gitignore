@@ -1,0 +1,26 @@
+# ============================================================
+# .gitignore — Portfolio Boubacar Nanky
+# ============================================================
+
+# ── FICHIER DE CONNEXION (PRIORITÉ ABSOLUE) ──────────────────
+# Contient les identifiants MySQL → jamais sur GitHub
+config/connexion.php
+
+# ── SCRIPT TEMPORAIRE PROFESSEUR ─────────────────────────────
+# À supprimer IMMÉDIATEMENT après utilisation
+setup_prof.php
+
+# ── UPLOADS PROJETS ──────────────────────────────────────────
+# Les images uploadées ne sont pas versionnées
+# (trop lourdes, propres à chaque environnement)
+images/projets/*
+!images/projets/.gitkeep
+
+# ── ENVIRONNEMENTS DE DÉVELOPPEMENT ──────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ── LOGS ─────────────────────────────────────────────────────
+*.log
